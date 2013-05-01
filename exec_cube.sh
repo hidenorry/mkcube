@@ -1,5 +1,5 @@
 #!/bin/sh
-#PBS -l nodes=equa02:ppn=16
+#PBS -l nodes=HOSTNAME:ppn=16
 #PBS -j oe
 #PBS -l nice=5
 
