@@ -1,9 +1,10 @@
 #!/bin/sh
 
-onum=1920
-cnum=16
 fchfile=Test.FChk
 outfile=gaas_
+oinum=1
+ojnum=1920
+cnum=16
 
 mkcube ()
 {
@@ -21,17 +22,17 @@ mkcube ()
 
 #  (insert (format "\n%s" (shell-command-to-string "pwd")))
 
-pnum=$((($onum / $cnum) + 1))
-pre_num=1
+pnum=$(((($ojnum - $oinum) / $cnum) + 1))
+pre_num=$oinum
 next_num=$(($pre_num + $pnum))
 
-while [ $next_num -lt $onum ]
+while [ $next_num -lt $ojnum ]
 do
     mkcube $fchfile $outfile $pre_num $next_num &
     pre_num=$(($next_num + 1))
     next_num=$(($next_num + $pnum))
 done
-mkcube $fchfile $outfile $pre_num $onum &
+mkcube $fchfile $outfile $pre_num $ojnum &
 
 
 wait
